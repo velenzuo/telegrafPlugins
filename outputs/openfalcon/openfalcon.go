@@ -81,7 +81,7 @@ func (t *MetaData) String() string {
 }
 
 var sampleConfig = `
-  addr = "10.10.1.13:8433"
+  addr = "127.0.0.1:8433"
 `
 
 func (f *Openfalcon) SetSerializer(serializer serializers.Serializer) {
