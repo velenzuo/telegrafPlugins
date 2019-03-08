@@ -81,7 +81,7 @@ func (t *MetaData) String() string {
 }
 
 var sampleConfig = `
-  addr = "127.0.0.1:8433"
+  addr = "1.1.1.1:8433"
 `
 
 func (f *Openfalcon) SetSerializer(serializer serializers.Serializer) {
@@ -122,6 +122,9 @@ func (f *Openfalcon) Write(metrics []telegraf.Metric) error {
 		for _, i := range (metric.FieldList()) {
 			tags := ""
 			for k,v := range metric.Tags() {
+                if k == "host" {
+                    continue
+                }
 				tags = tags + fmt.Sprintf("%s=%s,",k,v)
 			}
 			tags = strings.Trim(tags,",")
